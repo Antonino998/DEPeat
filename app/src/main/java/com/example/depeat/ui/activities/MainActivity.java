@@ -5,6 +5,9 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -16,90 +19,110 @@ import android.widget.Toast;
 import com.example.depeat.R;
 import com.example.depeat.Utilities;
 
-public  class MainActivity extends AppCompatActivity implements  View.OnClickListener{
-        LinearLayout ln;
-        Button loginBtn;
-        Button register;
-        EditText mail_ed;
-        EditText psw_ed;
-        Intent openpage1;
-        Intent  opemRegister;
-        Switch swBackground;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main); // quale layaut voglio mostrare
-            loginBtn = findViewById(R.id.login_btn);
-            register = findViewById(R.id.register_botton);
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    LinearLayout ln;
+    Button loginBtn;
+    Button register;
+    EditText mail_ed;
+    EditText psw_ed;
 
-            mail_ed = findViewById(R.id.email_text);
-            psw_ed = findViewById(R.id.password_text);
+    Intent opemRegister;
+    Switch swBackground;
 
-            swBackground=findViewById(R.id.cb_activity);
-            ln = findViewById(R.id.linear_pricipale);
 
-            if (!hasInvitationCode()){
-                register.setVisibility(View.INVISIBLE);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); // quale layaut voglio mostrare
+        loginBtn = findViewById(R.id.login_btn);
+        register = findViewById(R.id.register_botton);
+
+        mail_ed = findViewById(R.id.email_text);
+        psw_ed = findViewById(R.id.password_text);
+
+        swBackground = findViewById(R.id.cb_activity);
+        ln = findViewById(R.id.linear_pricipale);
+
+        if (!hasInvitationCode()) {
+            register.setVisibility(View.INVISIBLE);
+        }
+
+        loginBtn.setOnClickListener(this); //
+        register.setOnClickListener(this);
+        swBackground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                cambiaSfondo(isChecked);
             }
+        });
 
-            loginBtn.setOnClickListener(this); //
-            register.setOnClickListener(this);
-            swBackground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    cambiaSfondo(isChecked);
-                }
-            });
-
-            Log.i("Lifecycle","Activity created");
+        Log.i("Lifecycle", "Activity created");
 
 
-        }
-        private void cambiaSfondo(boolean isChecked){
-            ln.setId(R.id.linear_pricipale);
-            if(isChecked) {
-                ln.setBackgroundColor(Color.GREEN);
-            }else
-                ln.setBackgroundColor(Color.WHITE);
+    }
 
-        }
-        void showToast(String testo){
-            Toast.makeText(this,testo, Toast.LENGTH_LONG).show();
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-        private boolean hasInvitationCode(){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.login_menu) {
+            startActivity(new Intent(this, RgisterActivity.class));
+            return true;
+        }else if(item.getItemId() == R.id.checkout_menu){
+            startActivity(new Intent(this,CheckoutActivity.class));
             return true;
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void cambiaSfondo(boolean isChecked) {
+        ln.setId(R.id.linear_pricipale);
+        if (isChecked) {
+            ln.setBackgroundColor(Color.GREEN);
+        } else
+            ln.setBackgroundColor(Color.WHITE);
+
+    }
+
+    void showToast(String testo) {
+        Toast.makeText(this, testo, Toast.LENGTH_LONG).show();
+    }
+
+    private boolean hasInvitationCode() {
+        return true;
+    }
 
 
-
-        @Override
-        public void onClick(View v) {
-            if(v.getId() == R.id.login_btn){
-                doLogin();
-                String email=mail_ed.getText().toString();
-            }
-
-            else if(v.getId() == R.id.register_botton) {
-                opemRegister = new Intent(this, RgisterActivity.class);
-                startActivity(opemRegister);
-            }
-
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.login_btn) {
+            doLogin();
+            String email = mail_ed.getText().toString();
+        } else if (v.getId() == R.id.register_botton) {
+            opemRegister = new Intent(this, RgisterActivity.class);
+            startActivity(opemRegister);
         }
 
-        private void doLogin() {
-            String mail=mail_ed.getText().toString();
-
-            if(Utilities.controlEmail(mail) && psw_ed.getText().toString().length()>7){
-
-                showToast("Credenziali corrette");
-
-            }
-
-            else{
-
-                showToast("Credenziali errate o incorrette");
-            }}
     }
+
+    private void doLogin() {
+        String mail = mail_ed.getText().toString();
+
+        if (Utilities.controlEmail(mail) && psw_ed.getText().toString().length() > 7) {
+
+            showToast("Credenziali corrette");
+
+        } else {
+
+            showToast("Credenziali errate o incorrette");
+        }
+    }
+}
 
 

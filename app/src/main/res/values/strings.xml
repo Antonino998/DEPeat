@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">DEP Eat</string>
     <string name="username"> Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -8,5 +8,7 @@
     <string name="registra_cognome">Inserisci cognome</string>
     <string name="conferma_password"> Conferma Password</string>
     <string name="numero_telefono">Numero Tel</string>
+    <string name="checkout">Check Out</string>
+
 
 </resources>
