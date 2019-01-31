@@ -78,10 +78,6 @@ import android.widget.Toast;
             if(v.getId() == R.id.login_btn){
                 doLogin();
                 String email=mail_ed.getText().toString();
-
-                openpage1 = new Intent(MainActivity.this,VisualActivity.class);
-                openpage1.putExtra("email",email);
-                startActivity(openpage1);
             }
 
             else if(v.getId() == R.id.register_botton) {
