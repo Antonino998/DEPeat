@@ -1,11 +1,10 @@
-package com.example.depeat;
+package com.example.depeat.ui.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -14,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
- public  class MainActivity extends AppCompatActivity implements  View.OnClickListener{
+import com.example.depeat.R;
+import com.example.depeat.Utilities;
+
+public  class MainActivity extends AppCompatActivity implements  View.OnClickListener{
         LinearLayout ln;
         Button loginBtn;
         Button register;
@@ -69,9 +71,7 @@ import android.widget.Toast;
             return true;
         }
 
-        private boolean controlEmail(String mail){
-            return Patterns.EMAIL_ADDRESS.matcher(mail).matches();
-        }
+
 
         @Override
         public void onClick(View v) {
@@ -90,7 +90,7 @@ import android.widget.Toast;
         private void doLogin() {
             String mail=mail_ed.getText().toString();
 
-            if(controlEmail(mail) && psw_ed.getText().toString().length()>7){
+            if(Utilities.controlEmail(mail) && psw_ed.getText().toString().length()>7){
 
                 showToast("Credenziali corrette");
 
