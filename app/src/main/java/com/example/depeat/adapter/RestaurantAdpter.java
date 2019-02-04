@@ -44,8 +44,7 @@ public class RestaurantAdpter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return ristoranti.size()
-                ;
+        return ristoranti.size();
     }
 
 
