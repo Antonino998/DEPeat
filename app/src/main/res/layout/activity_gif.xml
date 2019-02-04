@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/backgroundColor"
+tools:context=".Gifclass.GifMain"
+    android:gravity="center">
+
+<pl.droidsonroids.gif.GifImageView
+    android:id="@+id/GifImageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/GifLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>
