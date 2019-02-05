@@ -4,11 +4,13 @@ public class Restaurant {
     private String name;
     private String indirizzo;
     private String minOrd;
+    private String imgUrl;
 
-    public Restaurant(String name,String indirizzo,String minOrd){
+    public Restaurant(String name,String indirizzo,String minOrd,String imgUrl){
         this.name=name;
         this.indirizzo=indirizzo;
         this.minOrd=minOrd;
+        this.imgUrl=imgUrl;
     }
 
     public String getName() {
@@ -23,7 +25,13 @@ public class Restaurant {
         return minOrd;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public void setName(String name) {
         this.name = name;

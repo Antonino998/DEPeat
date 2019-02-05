@@ -9,6 +9,8 @@
     <string name="conferma_password"> Conferma Password</string>
     <string name="numero_telefono">Numero Tel</string>
     <string name="checkout">Check Out</string>
+    <string name="label">label text</string>
+    <string name="chage_to_grid">Grid visualization</string>
 
 
 </resources>

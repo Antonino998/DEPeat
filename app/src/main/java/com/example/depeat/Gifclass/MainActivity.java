@@ -12,7 +12,7 @@ import com.example.depeat.ui.activities.HomeActivity;
 import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
-    private static int  TIME_OUT_LOADING = 2000;
+    private static int  TIME_OUT_LOADING = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

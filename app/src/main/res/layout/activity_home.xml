@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/linear_pricipale">
 
@@ -13,10 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/places_rv">
-
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_anchorGravity="bottom|right|end"
+        android:src="@drawable/ic_action_grid"
+        android:id="@+id/grid_button"/>
+
+</android.support.design.widget.CoordinatorLayout>
 
 
 
